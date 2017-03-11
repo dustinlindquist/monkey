@@ -1,19 +1,20 @@
 package lexer
 
 import (
-	"github.com/dustinlindquist/monkey/token"
 	"fmt"
+
+	"github.com/dustinlindquist/monkey/token"
 )
 
 type Lexer struct {
-	input string
-	position int
+	input        string
+	position     int
 	readPosition int
-	char byte
+	char         byte
 }
 
 func New(input string) *Lexer {
-	var l = &Lexer{input:input}
+	var l = &Lexer{input: input}
 	l.readChar()
 	return l
 }
@@ -37,7 +38,7 @@ func (l *Lexer) peekChar() byte {
 }
 
 func (l *Lexer) readNumber() string {
-	var start= l.position
+	var start = l.position
 	for isDigit(l.char) {
 		l.readChar()
 	}
@@ -139,5 +140,3 @@ func isLetter(char byte) bool {
 func isDigit(char byte) bool {
 	return '0' <= char && char <= '9'
 }
-
-
